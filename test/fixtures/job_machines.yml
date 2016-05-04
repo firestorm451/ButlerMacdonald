@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job_id: 
+  machine_id: 
+  user_id: 
+
+two:
+  job_id: 
+  machine_id: 
+  user_id: 
