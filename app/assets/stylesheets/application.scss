@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+ #navbar-main {
+   background-color: #99ccff;
+ }
+
+ #navbar-links li {
+
+   a {
+    color: #f2f2f2;
+   }
+
+   a:hover {
+     color: rgb(0,132,254);
+   }
+
+ }
+
+ #butler-logo img {
+   max-height: 6em;
+   padding: 20px;
+}

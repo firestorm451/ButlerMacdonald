@@ -1,0 +1,7 @@
+<div class="col-lg-4 col-md-4">
+  <%= simple_form_for Job.new, html: { class: 'form-horizontal' }, validate: true do |f| %>
+    <%= f.input :customer_id %>
+    <%= f.association :machines, as: :check_boxes %>
+    <%= f.button :submit, "Submit", id: 'create_job' %>
+  <% end %>
+</div>

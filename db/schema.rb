@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160502215830) do
+ActiveRecord::Schema.define(version: 20160505173652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 20160502215830) do
   add_index "boxes", ["location_id"], name: "index_boxes_on_location_id", using: :btree
   add_index "boxes", ["material_id"], name: "index_boxes_on_material_id", using: :btree
 
+  create_table "customers", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "job_machines", force: :cascade do |t|
     t.integer  "job_id"
     t.integer  "machine_id"
@@ -46,12 +53,14 @@ ActiveRecord::Schema.define(version: 20160502215830) do
   add_index "job_machines", ["user_id"], name: "index_job_machines_on_user_id", using: :btree
 
   create_table "jobs", force: :cascade do |t|
-    t.integer  "customer_id"
     t.text     "description"
     t.integer  "estimated_yield"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "customer_id"
   end
+
+  add_index "jobs", ["customer_id"], name: "index_jobs_on_customer_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
@@ -86,4 +95,5 @@ ActiveRecord::Schema.define(version: 20160502215830) do
   add_foreign_key "job_machines", "jobs"
   add_foreign_key "job_machines", "machines"
   add_foreign_key "job_machines", "users"
+  add_foreign_key "jobs", "customers"
 end
