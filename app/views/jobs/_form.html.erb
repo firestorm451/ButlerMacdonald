@@ -3,12 +3,12 @@
     <%= f.association :customer %>
     <%= f.association :machines, as: :check_boxes, :collection => Machine.all.order(:name) %>
     <%= f.input :job_number %>
-    <%= f.association :boxes do |box_form| %>
+    <!-- <%= f.association :boxes do |box_form| %>
       <div class="first_box">
         <%= box_form.input :location_id, as: :select, collection: Location.all.order(:name) %>
         <%= box_form.input :material_id, as: :select, collection: Material.all.order(:name) %>
         <%= box_form.input :material_weight %>
-      </div>
+      </div> -->
       <button id="add_box" class="btn btn-primary">Add another box</button>
       <% end %>
     <%= f.button :submit, "Submit", id: 'create_job' %>

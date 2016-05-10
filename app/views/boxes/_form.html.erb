@@ -6,3 +6,20 @@
     <%= f.button :submit, "Submit", id: 'create_location' %>
   <% end %>
 </div>
+<div class="col-lg-2 col-md-2">
+
+</div>
+<div class="col-lg-6 col-md-6">
+  <table class="table">
+    <thead>
+      <tr>
+        <th> Box Number </th>
+        <th> Box Weight </th>
+        <th> Location </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @boxes %>
+    </tbody>
+  </table>
+</div>

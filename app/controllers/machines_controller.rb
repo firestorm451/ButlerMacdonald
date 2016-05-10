@@ -8,10 +8,13 @@ class MachinesController < ApplicationController
 
   def new
     @machine = Machine.new
+    @job = Job.find(params[:job_id])
+    @machines = @job.machines
   end
 
   def create
-    @machine = Machine.new(machine_params)
+    @job = Job.find(params[:job_id])
+    @machine = @job.machines.new(machine_params)
     if @machine.save
       redirect_to new_machine_path
     else

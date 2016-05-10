@@ -5,13 +5,14 @@ Rails.application.routes.draw do
     resources :boxes
     member do
       get 'assign_machines'
+      get 'add_machines'
     end
   end
   resources :users
-  resources :machines
   resources :customers
   resources :locations
   resources :materials
+  resources :machines
 
   # You can have the root of your site routed with "root"
   root 'jobs#index'

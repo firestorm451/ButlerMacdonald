@@ -4,7 +4,6 @@ class JobsController < ApplicationController
     @job = Job.new
     @job.job_machines.build
     @job.boxes.build
-    Rails.logger.info @job.boxes.inspect
   end
 
   def index
@@ -16,15 +15,11 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
   end
 
-  def update
-
-  end
-
   def create
     @job = Job.new(job_params)
     Rails.logger.info @job.boxes.inspect
     if @job.save
-      redirect_to assign_machines_job_path(@job)
+      redirect_to root_path
     else
       render :new
     end
@@ -34,6 +29,25 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     if @job.update(job_params)
       redirect_to job_path
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @job = Job.find(params[:id])
+      render :edit
+  end
+
+  def destroy
+    @job.destroy
+    redirect_to root_path
+  end
+
+  def add_machines
+    @job = Job.find(params[:id])
+    if @job.update(job_params)
+      redirect_to assign_machines_job_path(@job)
     else
       render :new
     end
