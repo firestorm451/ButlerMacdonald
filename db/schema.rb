@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505173652) do
+ActiveRecord::Schema.define(version: 20160509211049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,8 +44,9 @@ ActiveRecord::Schema.define(version: 20160505173652) do
     t.integer  "job_id"
     t.integer  "machine_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "step_number"
   end
 
   add_index "job_machines", ["job_id"], name: "index_job_machines_on_job_id", using: :btree
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160505173652) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "customer_id"
+    t.integer  "job_number"
   end
 
   add_index "jobs", ["customer_id"], name: "index_jobs_on_customer_id", using: :btree
@@ -76,7 +78,7 @@ ActiveRecord::Schema.define(version: 20160505173652) do
   end
 
   create_table "materials", force: :cascade do |t|
-    t.string   "type"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

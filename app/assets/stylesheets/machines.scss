@@ -1,3 +1,14 @@
 // Place all the styles related to the Machines controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div span.checkbox {
+float: left;
+width: 50%
+
+}
+
+div.job_machines label.control-label {
+text-align: left;
+display: block;
+}

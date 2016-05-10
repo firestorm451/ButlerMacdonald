@@ -2,9 +2,16 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :boxes
-  resources :jobs
+  resources :jobs do
+    member do
+      get 'assign_machines'
+    end
+  end
   resources :users
   resources :machines
+  resources :customers
+  resources :locations
+  resources :materials
 
   # You can have the root of your site routed with "root"
   root 'jobs#index'

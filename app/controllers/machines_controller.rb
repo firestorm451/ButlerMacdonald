@@ -3,6 +3,7 @@ class MachinesController < ApplicationController
 
   def index
     @machines = Machine.all
+    @machines = Machine.order("name DESC")
   end
 
   def new
