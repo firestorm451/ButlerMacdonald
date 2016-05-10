@@ -1,0 +1,5 @@
+<tr>
+  <td><%= job.job_number %></td>
+  <td id="add-boxes"><%= link_to "Add Boxes", new_job_box_path(job), class: "btn btn-default" %></td>
+  <td id="add-machines"><%= link_to "Add Machines", add_machines_job_path(job), class: "btn btn-default"%></td>
+</tr>

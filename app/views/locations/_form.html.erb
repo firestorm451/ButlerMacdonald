@@ -1,0 +1,6 @@
+<div class="col-lg-4 col-md-4">
+  <%= simple_form_for Location.new, html: { class: 'form-horizontal' }, validate: true do |f| %>
+    <%= f.input :name %>
+    <%= f.button :submit, "Submit", id: 'create_location' %>
+  <% end %>
+</div>
