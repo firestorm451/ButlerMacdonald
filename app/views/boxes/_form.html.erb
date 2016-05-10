@@ -1,0 +1,8 @@
+<div class="col-lg-4 col-md-4">
+  <%= simple_form_for [@job, @box], html: { class: 'form-horizontal' }, validate: true do |f| %>
+    <%= f.input :location_id, as: :select, collection: Location.all.order(:name) %>
+    <%= f.input :material_id, as: :select, collection: Material.all.order(:name) %>
+    <%= f.input :material_weight, :autofocus => true %>
+    <%= f.button :submit, "Submit", id: 'create_location' %>
+  <% end %>
+</div>

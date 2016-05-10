@@ -1,4 +1,4 @@
 <tr>
-  <th><%= job.job_number %></th>
-  <th><%= link_to %></th>
+  <td><%= job.job_number %></td>
+  <td id="add-boxes"><%= link_to "Add Boxes", new_job_box_path(job), class: "btn btn-default" %></td>
 </tr>

@@ -7,13 +7,15 @@ class BoxesController < ApplicationController
   end
 
   def new
-    @box = Box.new
+    @box = Box.new(:material_id => params[:material_id], :location_id => params[:location_id])
+    @job = Job.find(params[:job_id])
   end
 
   def create
-    @box = Box.new(box_params)
+    @job = Job.find(params[:job_id])
+    @box = @job.boxes.new(box_params)
     if @box.save
-      redirect_to new_box_path
+      redirect_to new_job_box_path(@job, :material_id => @box.material_id, :location_id => @box.location_id)
     else
       render :new
     end
