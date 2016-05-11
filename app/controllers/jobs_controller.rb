@@ -13,6 +13,7 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @boxes = @job.boxes
   end
 
   def create
@@ -28,15 +29,20 @@ class JobsController < ApplicationController
   def update
     @job = Job.find(params[:id])
     if @job.update(job_params)
-      redirect_to job_path
+      if params[:process] == 'add_machines'
+        redirect_to assign_machines_job_path(@job)
+      elsif params[:process] == 'assign_machines'
+         redirect_to root_path
+      else
+        redirect_to root_path
+      end
     else
-      render :new
+      render :edit
     end
   end
 
   def edit
     @job = Job.find(params[:id])
-      render :edit
   end
 
   def destroy
@@ -46,11 +52,6 @@ class JobsController < ApplicationController
 
   def add_machines
     @job = Job.find(params[:id])
-    if @job.update(job_params)
-      redirect_to assign_machines_job_path(@job)
-    else
-      render :new
-    end
   end
 
   def assign_machines
@@ -63,4 +64,5 @@ class JobsController < ApplicationController
     params.require(:job).permit(:customer_id, :job_number, :machine_ids => [],
     boxes_attributes: [:material_weight, :location_id, :material_id], job_machines_attributes: [:step_number, :id])
   end
+
 end

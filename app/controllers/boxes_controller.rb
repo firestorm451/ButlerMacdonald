@@ -35,6 +35,12 @@ class BoxesController < ApplicationController
     end
   end
 
+  def destroy
+    @box = @job.box
+    @box.destroy
+    redirect_to root_path
+  end
+
   private
 
   def box_params
