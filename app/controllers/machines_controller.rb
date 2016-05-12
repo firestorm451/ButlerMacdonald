@@ -2,14 +2,14 @@ class MachinesController < ApplicationController
   before_action :require_user
 
   def index
-    @machines = Machine.all
+    @machines = Machine.all.order("step_number DESC")
     @machines = Machine.order("name DESC")
   end
 
   def new
     @machine = Machine.new
     @job = Job.find(params[:job_id])
-    @machines = @job.machines
+    @machines = @job.machines.order("step_number DESC")
   end
 
   def create

@@ -1,8 +1,7 @@
 <div class="col-lg-4 col-md-4">
   <%= simple_form_for @job, html: { class: 'form-horizontal' }, validate: true do |f| %>
-    <%= f.association :customer %>
-    <%= f.association :machines, as: :check_boxes, :collection => Machine.all.order(:name) %>
     <%= f.input :job_number %>
+    <%= f.association :customer %>
     <%= f.button :submit, "Submit", id: 'create_job' %>
   <% end %>
 </div>

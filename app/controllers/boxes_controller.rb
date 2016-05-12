@@ -36,9 +36,9 @@ class BoxesController < ApplicationController
   end
 
   def destroy
-    @box = @job.box
+    @box = Box.find(params[:id])
     @box.destroy
-    redirect_to root_path
+    redirect_to :back
   end
 
   private

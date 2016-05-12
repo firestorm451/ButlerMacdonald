@@ -8,12 +8,13 @@ class JobsController < ApplicationController
 
   def index
     @job = Job.new
-    @jobs = Job.all
+    @jobs = Job.all.order("job_number DESC")
   end
 
   def show
     @job = Job.find(params[:id])
     @boxes = @job.boxes
+    @machines = @job.machines.order("step_number")
   end
 
   def create
