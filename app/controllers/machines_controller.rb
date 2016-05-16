@@ -12,6 +12,11 @@ class MachinesController < ApplicationController
     @machines = @job.machines.order("step_number DESC")
   end
 
+  def show
+    @machine = Machine.find(params[:id])
+    @jobs = @machine.jobs.where(job_status: "active").order("job_number")
+  end
+
   def create
     @job = Job.find(params[:job_id])
     @machine = @job.machines.new(machine_params)

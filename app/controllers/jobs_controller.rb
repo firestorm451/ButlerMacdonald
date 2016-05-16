@@ -47,6 +47,7 @@ class JobsController < ApplicationController
   end
 
   def destroy
+    @job = Job.find(params[:id])
     @job.destroy
     redirect_to root_path
   end
@@ -57,6 +58,12 @@ class JobsController < ApplicationController
 
   def assign_machines
     @job = Job.find(params[:id])
+  end
+
+  def kickoff
+    @job = Job.find(params[:id])
+    @job.kickoff!
+    redirect_to root_path
   end
 
   private
