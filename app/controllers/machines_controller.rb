@@ -3,18 +3,30 @@ class MachinesController < ApplicationController
 
   def index
     @machines = Machine.all
-    @machines = Machine.order("name DESC")
   end
 
   def new
     @machine = Machine.new
-    @job = Job.find(params[:job_id])
-    @machines = @job.machines
+    if params[:job_id]
+      @job = Job.find(params[:job_id])
+      @machines = @job.machines.order("step_number DESC")
+    else
+
+    end
+  end
+
+  def show
+    @machine = Machine.find(params[:id])
+    @jobs = @machine.jobs.where(job_status: "active").order("job_number")
   end
 
   def create
-    @job = Job.find(params[:job_id])
-    @machine = @job.machines.new(machine_params)
+    if params[:job_id]
+      @job = Job.find(params[:job_id])
+      @machine = @job.machines.new(machine_params)
+    else
+      @machine = Machine.new(machine_params)
+    end
     if @machine.save
       redirect_to new_machine_path
     else

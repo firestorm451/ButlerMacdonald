@@ -1,5 +1,7 @@
-<div class="col-sm-4 col-lg-4 col-md-4">
+<div class="col-sm-12">
   <div class="">
-    <p><%= machine.name %></p>
+    <ul>
+      <li id="machines" style="list-style-type: none;"><h3><%= link_to machine.name, machine_path(machine) %></h3></li>
+    </ul>
   </div>
 </div>

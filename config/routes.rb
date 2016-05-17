@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     member do
       get 'assign_machines'
       get 'add_machines'
+      get 'kickoff'
+      get 'on_hold'
+      get 'activate'
+      get 'complete'
     end
   end
   resources :users
@@ -13,6 +17,13 @@ Rails.application.routes.draw do
   resources :locations
   resources :materials
   resources :machines
+  resources :job_machines do
+    resources :boxes do
+      member do
+        get 'next_step'
+      end
+    end
+  end
 
   # You can have the root of your site routed with "root"
   root 'jobs#index'
