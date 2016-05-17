@@ -11,7 +11,7 @@ class Job < ActiveRecord::Base
 
 
   def ready_to_kick_off?
-    machines.any? && boxes.any? && job_status != "active" && job_status != "hold"
+    machines.any? && boxes.any? && job_status != "active" && job_status != "hold" && job_status != "complete"
   end
 
   def kickoff!
@@ -35,7 +35,7 @@ class Job < ActiveRecord::Base
   end
 
   def ready_to_complete?
-    boxes.where(is_final: true).any?
+    boxes.where(is_final: true).any? && job_status != "complete"
   end
 
   def complete!
