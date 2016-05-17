@@ -11,7 +11,7 @@ class Job < ActiveRecord::Base
 
 
   def ready_to_kick_off?
-    machines.any? && boxes.any? && job_status != "active"
+    machines.any? && boxes.any? && job_status != "active" && job_status != "hold"
   end
 
   def kickoff!
@@ -29,12 +29,46 @@ class Job < ActiveRecord::Base
     save!
   end
 
+  def active!
+    self.job_status = "active"
+    save!
+  end
+
+  def ready_to_complete?
+    boxes.where(is_final: true).any?
+  end
+
+  def complete!
+    self.job_status = "complete"
+    save!
+  end
+
   def check_on_hold!
     self.job_status != "hold"
   end
 
-  def sum_of_boxes
+  def check_inactive_hold?
+    self.job_status == "active"
+  end
+
+  def check_status_on_hold?
+    self.job_status == "hold"
+  end
+
+  def sum_of_raw_boxes
     boxes.where(is_raw: true).sum(:material_weight)
+  end
+
+  def sum_of_final_boxes
+    boxes.where(is_final: true).sum(:material_weight)
+  end
+
+  def sum_of_input_boxes
+    input_boxes.sum(:material_weight)
+  end
+
+  def sum_of_output_boxes
+    output_boxes.sum(:material_weight)
   end
 
 end

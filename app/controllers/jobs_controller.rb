@@ -14,7 +14,8 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
-    @boxes = @job.boxes.where(is_raw: true)
+    @start_boxes = @job.boxes.where(is_raw: true)
+    @final_boxes = @job.boxes.where(is_final: true)
     @machines = @job.machines.order("step_number")
   end
 
@@ -72,6 +73,19 @@ class JobsController < ApplicationController
     @job.on_hold!
     redirect_to root_path
   end
+
+  def activate
+    @job = Job.find(params[:id])
+    @job.active!
+    redirect_to root_path
+  end
+
+  def complete
+    @job = Job.find(params[:id])
+    @job.complete!
+    redirect_to root_path
+  end
+
   private
 
   def job_params

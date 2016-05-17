@@ -12,6 +12,16 @@
     <%= f.input :material_weight, :autofocus => true %>
     <%= f.button :submit, "Submit", id: 'create_location' %>
   <% end %>
+  <% if @job_machine.sum_of_input_boxes > 0 %>
+    <h4> Input Weight: <%= @job_machine.sum_of_input_boxes %></h4>
+  <% else %>
+
+  <% end %>
+  <% if @job_machine.sum_of_output_boxes > 0 %>
+    <h4> Output Weight: <%= @job_machine.sum_of_output_boxes %></h4>
+  <% else %>
+
+  <% end %>
 </div>
 <div class="col-xs-1">
 
@@ -32,7 +42,7 @@
         <%= render partial: 'box', collection: @job_machine.input_boxes %>
       </tbody>
     </table>
-    <% if @job_machine.sum_of_output_boxes > 0 %>
+    <% if @job_machine.sum_of_input_boxes > 0 %>
       <h4> Total Weight: <%= @job_machine.sum_of_input_boxes %></h4>
     <% else %>
 
@@ -50,6 +60,7 @@
           <th> Box Weight </th>
           <th> Location </th>
           <th> Move On </th>
+          <th> Delete </th>
         </tr>
       </thead>
       <tbody>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       get 'add_machines'
       get 'kickoff'
       get 'on_hold'
+      get 'activate'
+      get 'complete'
     end
   end
   resources :users

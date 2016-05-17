@@ -6,8 +6,8 @@
     <%= f.button :submit, "Submit", id: 'create_location' %>
     <%= link_to "Home", root_path, class: "btn btn-default" %>
   <% end %>
-  <% if @job.sum_of_boxes > 0 %>
-    <h4> Total Weight: <%= @job.sum_of_boxes %></h4>
+  <% if @job.sum_of_raw_boxes > 0 %>
+    <h4> Total Weight: <%= @job.sum_of_raw_boxes %></h4>
   <% else %>
 
   <% end %>
@@ -30,4 +30,9 @@
       <%= render @boxes %>
     </tbody>
   </table>
+  <% if @job.sum_of_raw_boxes > 0 %>
+  <h4> Total Weight: <%= @job.sum_of_raw_boxes %></h4>
+  <% else %>
+
+  <% end %>
 </div>

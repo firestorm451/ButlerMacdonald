@@ -1,8 +1,29 @@
 <h1>Job Display</h1>
-<div class="col-md-7">
+<div class="col-md-8">
   <%= render partial: "machine", collection: @machines %>
 </div>
-<div class="col-lg-5 col-md-5">
+<div class="col-sm-4">
+  <div class="box-heading">
+    <h3>Final Boxes</h3>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th> Box Number </th>
+        <th> Material Type </th>
+        <th> Box Weight </th>
+        <th> Location </th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "box", collection: @final_boxes %>
+    </tbody>
+  </table>
+  <% if @job.sum_of_final_boxes > 0 %>
+    <h4> Total Weight: <%= @job.sum_of_final_boxes %></h4>
+  <% else %>
+
+  <% end %>
   <div class="box-heading">
     <h3>Initial Boxes</h3>
   </div>
@@ -16,7 +37,12 @@
       </tr>
     </thead>
     <tbody>
-      <%= render partial: "box", collection: @boxes %>
+      <%= render partial: "box", collection: @start_boxes %>
     </tbody>
   </table>
+  <% if @job.sum_of_raw_boxes > 0 %>
+    <h4> Total Weight: <%= @job.sum_of_raw_boxes %></h4>
+  <% else %>
+
+  <% end %>
 </div>
