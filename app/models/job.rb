@@ -23,4 +23,18 @@ class Job < ActiveRecord::Base
   def link_job_with_machine(machine)
     job_machines.find_by(machine_id: machine.id)
   end
+
+  def on_hold!
+    self.job_status = "hold"
+    save!
+  end
+
+  def check_on_hold!
+    self.job_status != "hold"
+  end
+
+  def sum_of_boxes
+    boxes.where(is_raw: true).sum(:material_weight)
+  end
+
 end

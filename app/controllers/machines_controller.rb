@@ -2,14 +2,17 @@ class MachinesController < ApplicationController
   before_action :require_user
 
   def index
-    @machines = Machine.all.order("step_number DESC")
-    @machines = Machine.order("name DESC")
+    @machines = Machine.all
   end
 
   def new
     @machine = Machine.new
-    @job = Job.find(params[:job_id])
-    @machines = @job.machines.order("step_number DESC")
+    if params[:job_id]
+      @job = Job.find(params[:job_id])
+      @machines = @job.machines.order("step_number DESC")
+    else
+
+    end
   end
 
   def show
@@ -18,8 +21,12 @@ class MachinesController < ApplicationController
   end
 
   def create
-    @job = Job.find(params[:job_id])
-    @machine = @job.machines.new(machine_params)
+    if params[:job_id]
+      @job = Job.find(params[:job_id])
+      @machine = @job.machines.new(machine_params)
+    else
+      @machine = Machine.new(machine_params)
+    end
     if @machine.save
       redirect_to new_machine_path
     else

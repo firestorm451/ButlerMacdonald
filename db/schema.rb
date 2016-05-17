@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512153352) do
+ActiveRecord::Schema.define(version: 20160516154011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160512153352) do
     t.boolean  "is_raw",          default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.boolean  "destroyer",       default: false
   end
 
   add_index "boxes", ["job_id"], name: "index_boxes_on_job_id", using: :btree

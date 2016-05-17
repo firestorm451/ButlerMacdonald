@@ -2,6 +2,7 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
+    @job.job_status = "inactive"
     @job.job_machines.build
     @job.boxes.build
   end
@@ -13,7 +14,7 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
-    @boxes = @job.boxes
+    @boxes = @job.boxes.where(is_raw: true)
     @machines = @job.machines.order("step_number")
   end
 
@@ -66,10 +67,15 @@ class JobsController < ApplicationController
     redirect_to root_path
   end
 
+  def on_hold
+    @job = Job.find(params[:id])
+    @job.on_hold!
+    redirect_to root_path
+  end
   private
 
   def job_params
-    params.require(:job).permit(:customer_id, :job_number, :machine_ids => [],
+    params.require(:job).permit(:customer_id, :job_number, :job_status, :machine_ids => [],
     boxes_attributes: [:material_weight, :location_id, :material_id], job_machines_attributes: [:step_number, :id])
   end
 

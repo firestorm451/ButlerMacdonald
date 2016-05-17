@@ -13,4 +13,8 @@ class JobMachine < ActiveRecord::Base
     output_boxes.sum(:material_weight)
   end
 
+  def next_machine
+    job.job_machines.find_by(step_number: step_number + 1)
+  end
+
 end

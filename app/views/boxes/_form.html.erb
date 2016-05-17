@@ -4,6 +4,12 @@
     <%= f.input :material_id, as: :select, collection: Material.all.order(:name) %>
     <%= f.input :material_weight, :autofocus => true %>
     <%= f.button :submit, "Submit", id: 'create_location' %>
+    <%= link_to "Home", root_path, class: "btn btn-default" %>
+  <% end %>
+  <% if @job.sum_of_boxes > 0 %>
+    <h4> Total Weight: <%= @job.sum_of_boxes %></h4>
+  <% else %>
+
   <% end %>
 </div>
 <div class="col-lg-2 col-md-2">

@@ -1,8 +1,13 @@
 <tr>
-  <td id="show-job"><%= link_to job.job_number, job_path(job) %></td>
+  <td id="show-job"><%= link_to job.job_number, job_path(job), class: "btn btn-default" %></td>
   <td id="add-boxes"><%= link_to "Add Boxes", new_job_box_path(job), class: "btn btn-default" %></td>
   <td id="add-machines"><%= link_to "Add Machines", add_machines_job_path(job), class: "btn btn-default"%></td>
   <td id="kickoff"><%= link_to "Kickoff", kickoff_job_path(job), class: "btn btn-default" if job.ready_to_kick_off? %></td>
   <td id="job-status"><%= job.job_status %></td>
+  <!-- <% if job.check_on_hold! %>
+  <td id="on-hold"><%= link_to "On Hold", on_hold_job_path(job), class: "btn btn-default"%></td>
+  <% else %>
+  <td id="off-hold"><%= link_to "Off Hold" %></td>
+  <% end %> -->
   <td id="job-destroy"><%= link_to "Delete Job", job_path(job), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "btn btn-default"%></td>
 </tr>

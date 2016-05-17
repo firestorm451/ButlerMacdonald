@@ -9,7 +9,7 @@ class BoxesController < ApplicationController
   def new
     @box = Box.new(:material_id => params[:material_id], :location_id => params[:location_id])
     @job = Job.find(params[:job_id])
-    @boxes = @job.boxes
+    @boxes = @job.boxes.where(is_raw: true)
   end
 
   def create
@@ -37,6 +37,18 @@ class BoxesController < ApplicationController
     end
   end
 
+  def next_step
+    @job_machine = JobMachine.find(params[:job_machine_id])
+    @box = Box.find(params[:id])
+    if @job_machine.next_machine
+      @box.input_id = @job_machine.next_machine.id
+    else
+      @box.is_final = true
+    end
+      @box.save!
+    redirect_to :back
+  end
+
   def edit
   end
 
@@ -51,7 +63,8 @@ class BoxesController < ApplicationController
 
   def destroy
     @box = Box.find(params[:id])
-    @box.destroy
+    @box.destroyer = true
+    @box.save
     redirect_to :back
   end
 

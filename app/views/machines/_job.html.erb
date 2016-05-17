@@ -1,7 +1,6 @@
 <tr>
+  <td id="show-job"><%= link_to job.job_number, job_path(job), class: "btn btn-default" %></td>
+  <td id="customer"><%= job.customer.name %></td>
   <td id="lets-run-this"><%= link_to "Start Job", job_machine_path(job.link_job_with_machine(@machine)), class: "btn btn-default" %></td>
-  <td id="show-job"><%= link_to job.job_number, job_path(job) %></td>
-  <td id="add-boxes"><%= link_to "Add Boxes", new_job_box_path(job), class: "btn btn-default" %></td>
-  <td id="add-machines"><%= link_to "Add Machines", add_machines_job_path(job), class: "btn btn-default"%></td>
   <td id="job-status"><%= job.job_status %></td>
 </tr>
