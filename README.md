@@ -5,24 +5,15 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+Butler MacDonald
 
-* System dependencies
+This is an inventory management system for a plastic recycling facility based on their workflow.
+This allows you to create new jobs and manage workflow from a machine.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+To use:
+Put a fork in it.
+rake db:migrate
+rake db:seed
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
