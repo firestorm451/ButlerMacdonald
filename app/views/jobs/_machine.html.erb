@@ -14,11 +14,11 @@
             </tr>
           </thead>
           <tbody>
-            <%= render partial: 'box', collection: machine.input_boxes %>
+            <%= render partial: 'box', collection: @job.link_job_with_machine(machine).input_boxes %>
           </tbody>
         </table>
-        <% if machine.sum_of_input_boxes > 0 %>
-          <h4> Total Weight: <%= machine.sum_of_input_boxes %></h4>
+        <% if @job.link_job_with_machine(machine).sum_of_input_boxes > 0 %>
+          <h4> Total Weight: <%= @job.link_job_with_machine(machine).sum_of_input_boxes %> lbs</h4>
         <% else %>
 
         <% end %>
@@ -37,11 +37,11 @@
             </tr>
           </thead>
           <tbody>
-            <%= render partial: 'box', collection: machine.output_boxes %>
+            <%= render partial: 'box', collection: @job.link_job_with_machine(machine).output_boxes %>
           </tbody>
         </table>
-        <% if machine.sum_of_output_boxes > 0 %>
-          <h4> Total Weight: <%= machine.sum_of_output_boxes %></h4>
+        <% if @job.link_job_with_machine(machine).sum_of_output_boxes > 0 %>
+          <h4> Total Weight: <%= @job.link_job_with_machine(machine).sum_of_output_boxes %> lbs</h4>
         <% else %>
 
         <% end %>

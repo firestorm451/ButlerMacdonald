@@ -65,18 +65,21 @@ class JobsController < ApplicationController
   def kickoff
     @job = Job.find(params[:id])
     @job.kickoff!
+    flash[:success] = "Job number #{@job.job_number} is now active."
     redirect_to root_path
   end
 
   def on_hold
     @job = Job.find(params[:id])
     @job.on_hold!
+    flash[:success] = "Job number #{@job.job_number} is now on hold."
     redirect_to root_path
   end
 
   def activate
     @job = Job.find(params[:id])
     @job.active!
+    flash[:success] = "Job number #{@job.job_number} is now active."
     redirect_to root_path
   end
 

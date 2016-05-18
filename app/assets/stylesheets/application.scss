@@ -16,21 +16,27 @@
 
  #navbar-main {
    background-color: #99ccff;
- }
-
- #navbar-links li {
-
-   a {
-    color: #f2f2f2;
-   }
-
-   a:hover {
-     color: rgb(0,132,254);
-   }
+   height: 80px;
 
  }
 
  #butler-logo img {
-   max-height: 6em;
-   padding: 20px;
+  width: 40px;
+  margin-right: 20px;
+}
+
+
+.navbar-left li {
+  margin-top: 40px;
+  background-color: white;
+  margin-right: 10px;
+}
+
+.navbar-left li a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  background-color: #99ccff;
 }

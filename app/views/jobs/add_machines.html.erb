@@ -1,5 +1,6 @@
 <div class="col-lg-4 col-md-4">
-  <h2>Job Number <%= @job.job_number %></h2>
+  <h3>Job Number: <%= @job.job_number %></h3>
+  <h4>Add machines to the job</h4>
   <%= simple_form_for @job, url: job_path(@job, :process => 'add_machines'), html: { class: 'form-horizontal' }, validate: true do |f| %>
     <%= f.association :machines, as: :check_boxes, :collection => Machine.all.order(:name) %>
     <%= f.button :submit, "Submit", id: 'create_job' %>

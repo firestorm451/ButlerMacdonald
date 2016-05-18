@@ -24,6 +24,10 @@ class Job < ActiveRecord::Base
     job_machines.find_by(machine_id: machine.id)
   end
 
+  def add_inactive_status
+    self.job_status = "inactive"
+  end
+
   def on_hold!
     self.job_status = "hold"
     save!

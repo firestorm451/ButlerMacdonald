@@ -1,7 +1,7 @@
 <tr>
   <td><%= box_counter + 1 %></td>
   <td><%= box.material.name %></td>
-  <td><%= box.material_weight %></td>
+  <td><%= box.material_weight %> lbs</td>
   <td><%= box.location.name %></td>
   <td id="add-boxes"><%= link_to "Delete", job_box_path(box.job, box), method: :delete, class: "btn btn-default" %></td>
 </tr>
