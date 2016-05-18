@@ -2,12 +2,18 @@
   <%= simple_form_for [@job, @box], html: { class: 'form-horizontal' }, validate: true do |f| %>
     <%= f.input :location_id, as: :select, collection: Location.all.order(:name) %>
     <%= f.input :material_id, as: :select, collection: Material.all.order(:name) %>
-    <%= f.input :material_weight, :autofocus => true %>
+      <%= f.input :material_weight, label: false do %>
+        <%= f.label :material_weight %>
+        <div class="input-group">
+          <%= f.input_field :material_weight, :autofocus => true, class: 'form-control' %>
+          <span class="input-group-addon">lbs</span>
+        </div>
+      <% end %>
     <%= f.button :submit, "Submit", id: 'create_location' %>
     <%= link_to "Home", root_path, class: "btn btn-default" %>
   <% end %>
   <% if @job.sum_of_raw_boxes > 0 %>
-    <h4> Total Weight: <%= @job.sum_of_raw_boxes %></h4>
+    <h4> Total Weight: <%= @job.sum_of_raw_boxes %> lbs</h4>
   <% else %>
 
   <% end %>
@@ -31,7 +37,7 @@
     </tbody>
   </table>
   <% if @job.sum_of_raw_boxes > 0 %>
-  <h4> Total Weight: <%= @job.sum_of_raw_boxes %></h4>
+  <h4> Total Weight: <%= @job.sum_of_raw_boxes %> lbs</h4>
   <% else %>
 
   <% end %>
