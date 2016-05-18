@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Machine.create! ([
   { :name => "Granulator 1" }, { :name => "Granulator 2"}, { :name => "Granulator 3"}, { :name => "Color 1"},
-  { :name => "Color 3"}, { :name "Wet 1"}, { :name "Wet 2"}, { :name "Wet 3"}, { :name "Extruder"}
+  { :name => "Color 3"}, { :name => "Wet 1"}, { :name => "Wet 2"}, { :name => "Wet 3"}, { :name => "Extruder"}
   ])
 
 Location.create! ([
