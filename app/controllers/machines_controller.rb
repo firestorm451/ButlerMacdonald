@@ -7,6 +7,7 @@ class MachinesController < ApplicationController
   def new
     @machine = Machine.new
     @job = Job.find(params[:job_id])
+    redirect_if_job_complete?
     @machines = @job.machines.order("step_number DESC")
   end
 
@@ -18,6 +19,7 @@ class MachinesController < ApplicationController
   def create
     if params[:job_id]
       @job = Job.find(params[:job_id])
+      redirect_if_job_complete?
       @machine = @job.machines.new(machine_params)
     else
       @machine = Machine.new(machine_params)

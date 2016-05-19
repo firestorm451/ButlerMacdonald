@@ -6,14 +6,14 @@ class Job < ActiveRecord::Base
   validates_presence_of :job_number, :customer_id
   validates_numericality_of :job_number, :greater_than_or_equal_to =>0
   validates_uniqueness_of :job_number
-  
+
 
   accepts_nested_attributes_for :job_machines
   accepts_nested_attributes_for :boxes
 
 
   def ready_to_kick_off?
-    machines.any? && boxes.any? && job_status != "active" && job_status != "hold" && job_status != "complete"
+    machines.any? && boxes.any? && job_status == 'inactive'
   end
 
   def kickoff!

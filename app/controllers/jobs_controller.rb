@@ -49,6 +49,7 @@ class JobsController < ApplicationController
 
   def destroy
     @job = Job.find(params[:id])
+    redirect_if_job_complete?
     @job.destroy
     redirect_to root_path
   end

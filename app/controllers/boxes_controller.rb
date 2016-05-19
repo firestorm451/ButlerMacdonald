@@ -8,12 +8,14 @@ class BoxesController < ApplicationController
   def new
     @box = Box.new(:material_id => params[:material_id], :location_id => params[:location_id])
     @job = Job.find(params[:job_id])
+    redirect_if_job_complete?
     @boxes = @job.boxes.where(is_raw: true)
   end
 
   def create
     if params[:job_id]
       @job = Job.find(params[:job_id])
+      redirect_if_job_complete?
       @box = @job.boxes.new(box_params)
       @box.is_raw = true
       if @box.save

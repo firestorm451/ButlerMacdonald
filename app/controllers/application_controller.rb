@@ -15,14 +15,21 @@ class ApplicationController < ActionController::Base
 
   def require_user
     unless current_user
-      flash.now[:danger] = "You need to login first."
+      flash[:danger] = "You need to login first."
       redirect_to :login
     end
   end
 
   def disallow_user
     if current_user
-      flash.now[:warning] = "You're already logged in."
+      flash[:warning] = "You're already logged in."
+      redirect_to :root
+    end
+  end
+
+  def redirect_if_job_complete?
+    if defined?(@job) && @job.job_status == "complete"
+      flash[:warning] = "This job is already complete."
       redirect_to :root
     end
   end

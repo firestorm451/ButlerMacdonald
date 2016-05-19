@@ -16,6 +16,6 @@ class Box < ActiveRecord::Base
   accepts_nested_attributes_for :material
 
   def ready_to_move_on_box?
-    input_id || location.name == "Discard" || is_final == true || material.name == "Trash" || material.name == "Fines"
+    !(input_id || location.name == "Discard" || is_final == true || %w(Trash Fines).include?(material.name))
   end
 end
