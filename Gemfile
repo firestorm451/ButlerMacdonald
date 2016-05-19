@@ -30,6 +30,7 @@ gem 'bootstrap-sass'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'pg_search'
+gem 'jquery-tablesorter'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
