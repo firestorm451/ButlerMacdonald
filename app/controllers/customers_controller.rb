@@ -1,5 +1,4 @@
 class CustomersController < ApplicationController
-  before_action :require_user
 
   def index
     @customers = Customer.all
@@ -17,7 +16,7 @@ class CustomersController < ApplicationController
       render :new
     end
   end
-  
+
   def update
     @customer = Customer.new(customer_params)
     @customer.attributes = customer_params

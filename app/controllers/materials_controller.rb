@@ -1,5 +1,4 @@
 class MaterialsController < ApplicationController
-  before_action :require_user
 
   def index
     @material = Material.all
@@ -14,18 +13,6 @@ class MaterialsController < ApplicationController
     @material = Material.new(material_params)
     if @material.save
       redirect_to new_material_path
-    else
-      render :new
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    @material.attributes = material_params
-    if @material.save
-      redirect_to root_path
     else
       render :new
     end

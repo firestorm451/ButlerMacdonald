@@ -21,7 +21,6 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-    Rails.logger.info @job.boxes.inspect
     if @job.save
       redirect_to root_path
     else

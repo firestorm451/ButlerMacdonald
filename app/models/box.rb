@@ -10,12 +10,12 @@ class Box < ActiveRecord::Base
     :less_than => 3000
   }
 
-
-
   default_scope { where(destroyer: false) }
-  # validates :input_job_machine, presence: true, unless: ->(box){box.output_job_machine.present?}
-  # validates :output_job_machine, presence: true, unless: ->(box){box.input_job_machine.present?}
 
   accepts_nested_attributes_for :location
   accepts_nested_attributes_for :material
+
+  def ready_to_move_on_box?
+    input_id || location.name == "Discard" || is_final == true || material.name == "Trash" || material.name == "Fines"
+  end
 end

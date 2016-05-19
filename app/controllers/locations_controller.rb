@@ -1,5 +1,4 @@
 class LocationsController < ApplicationController
-  before_action :require_user
 
   def index
     @location = Location.all
@@ -14,18 +13,6 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
     if @location.save
       redirect_to new_location_path
-    else
-      render :new
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    @location.attributes = location_params
-    if @location.save
-      redirect_to root_path
     else
       render :new
     end

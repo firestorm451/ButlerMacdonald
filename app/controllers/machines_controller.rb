@@ -1,5 +1,4 @@
 class MachinesController < ApplicationController
-  before_action :require_user
 
   def index
     @machines = Machine.all
@@ -7,12 +6,8 @@ class MachinesController < ApplicationController
 
   def new
     @machine = Machine.new
-    if params[:job_id]
-      @job = Job.find(params[:job_id])
-      @machines = @job.machines.order("step_number DESC")
-    else
-
-    end
+    @job = Job.find(params[:job_id])
+    @machines = @job.machines.order("step_number DESC")
   end
 
   def show
@@ -38,6 +33,7 @@ class MachinesController < ApplicationController
   end
 
   def update
+    @machine = Machine.find(params[:id])
     @machine.attributes = machine_params
     if @machine.save
       redirect_to root_path
