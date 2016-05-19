@@ -1,8 +1,8 @@
 <tr>
   <td id="show-job"><%= link_to job.job_number, job_path(job), class: "btn btn-default" %></td>
   <td id="customer-name"><%= job.customer.name %></td>
-  <td id="add-boxes"><%= link_to "Add Boxes", new_job_box_path(job), class: "btn btn-default" %></td>
-  <td id="add-machines"><%= link_to "Add Machines", add_machines_job_path(job), class: "btn btn-default"%></td>
+  <td id="add-boxes"><%= link_to "Add Boxes", new_job_box_path(job), class: "btn btn-default" if job.check_complete_status? %></td>
+  <td id="add-machines"><%= link_to "Add Machines", add_machines_job_path(job), class: "btn btn-default" if job.check_complete_status? %></td>
   <td id="kickoff"><%= link_to "Kickoff", kickoff_job_path(job), class: "btn btn-default" if job.ready_to_kick_off? %></td>
   <td id="job-status"><%= job.job_status %></td>
   <% if job.check_on_hold! %>
@@ -11,5 +11,5 @@
     <td id="off-hold"><%= link_to "Active", activate_job_path(job), class: "btn btn-default" if job.check_status_on_hold? %></td>
   <% end %>
   <td id="job-complete"><%= link_to "Complete Job", complete_job_path(job), data: { confirm: 'Are you certain you want to delete this?' }, class: "btn btn-default" if job.ready_to_complete? %></td>
-  <td id="job-destroy"><%= link_to "Delete Job", job_path(job), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "btn btn-default"%></td>
+  <td id="job-destroy"><%= link_to "Delete Job", job_path(job), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "btn btn-default" if job.check_complete_status? %></td>
 </tr>
