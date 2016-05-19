@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :jobs do
-    resources :boxes
+    resources :boxes, except: [:edit, :update]
     member do
       get 'assign_machines'
       get 'add_machines'
@@ -12,13 +12,13 @@ Rails.application.routes.draw do
       get 'complete'
     end
   end
-  resources :users
-  resources :customers
-  resources :locations
-  resources :materials
-  resources :machines
+  resources :users, only: [:new, :create, :show]
+  resources :customers, only: [:new, :create, :show]
+  resources :locations, only: [:new, :create, :show]
+  resources :materials, only: [:new, :create, :show]
+  resources :machines, except: [:edit, :update]
   resources :job_machines do
-    resources :boxes do
+    resources :boxes, except: [:edit, :update] do
       member do
         get 'next_step'
       end

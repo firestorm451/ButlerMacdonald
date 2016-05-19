@@ -4,7 +4,8 @@ class Job < ActiveRecord::Base
   has_many :boxes, dependent: :destroy
   belongs_to :customer
   validates_presence_of :job_number, :customer_id
-  validates_numericality_of :job_number
+  validates_numericality_of :job_number, :greater_than_or_equal_to =>0
+  validates_uniqueness_of :job_number
 
   accepts_nested_attributes_for :job_machines
   accepts_nested_attributes_for :boxes

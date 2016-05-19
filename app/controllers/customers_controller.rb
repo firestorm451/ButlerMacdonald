@@ -17,11 +17,9 @@ class CustomersController < ApplicationController
       render :new
     end
   end
-
-  def edit
-  end
-
+  
   def update
+    @customer = Customer.new(customer_params)
     @customer.attributes = customer_params
     if @customer.save
       redirect_to root_path

@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def require_user
     unless current_user
       flash.now[:danger] = "You need to login first."
-      redirect_to :root
+      redirect_to :login
     end
   end
 

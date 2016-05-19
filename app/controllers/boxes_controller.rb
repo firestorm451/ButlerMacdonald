@@ -53,6 +53,7 @@ class BoxesController < ApplicationController
   end
 
   def update
+    @box = Box.find(parmas[:id])
     @box.attributes = box_params
     if @box.save
       redirect_to root_path
