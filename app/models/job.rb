@@ -6,6 +6,7 @@ class Job < ActiveRecord::Base
   validates_presence_of :job_number, :customer_id
   validates_numericality_of :job_number, :greater_than_or_equal_to =>0
   validates_uniqueness_of :job_number
+  validates_length_of :job_number, within: 2..7
 
 
   accepts_nested_attributes_for :job_machines

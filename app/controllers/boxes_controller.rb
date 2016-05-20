@@ -33,7 +33,7 @@ class BoxesController < ApplicationController
       else
         @job = @job_machine
         @boxes = @job_machine.output_boxes.reject{ |box| box == @box }
-        render :new
+        render "job_machines/show"
       end
     end
   end

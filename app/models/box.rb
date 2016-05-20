@@ -4,7 +4,7 @@ class Box < ActiveRecord::Base
   belongs_to :job
   belongs_to :input_job_machine, class_name: JobMachine, foreign_key: "input_id"
   belongs_to :output_job_machine, class_name: JobMachine, foreign_key: "output_id"
-  validates_presence_of :location, :job, :material_weight
+  validates_presence_of :location, :job, :material_weight, :material
   validates :material_weight, numericality: {
     :greater_than => 1,
     :less_than => 3000

@@ -14,7 +14,8 @@ Location.create! ([
   { :name => "S1" }, { :name => "S2" }, { :name => "S3" }, { :name => "S4" }, { :name => "S5" },
   { :name => "H1" }, { :name => "H2" }, { :name => "H3" }, { :name => "H4" }, { :name => "H5" },
   { :name => "R1" }, { :name => "R2" }, { :name => "R3" }, { :name => "R4" }, { :name => "R5" },
-  { :name => "X1" }, { :name => "X2" }, { :name => "X3" }, { :name => "X4" }, { :name => "X5" }
+  { :name => "X1" }, { :name => "X2" }, { :name => "X3" }, { :name => "X4" }, { :name => "X5" },
+  { :name => "Discard" }
   ])
 
 Material.create! ([

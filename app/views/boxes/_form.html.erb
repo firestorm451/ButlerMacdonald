@@ -1,7 +1,7 @@
 <div class="col-lg-4 col-md-4">
   <%= simple_form_for [@job, @box], html: { class: 'form-horizontal' }, validate: true do |f| %>
-    <%= f.input :location_id, as: :select, collection: Location.all.order(:name) %>
-    <%= f.input :material_id, as: :select, collection: Material.all.order(:name) %>
+    <%= f.association :location, as: :select, collection: Location.all.order(:name) %>
+    <%= f.association :material, as: :select, collection: Material.all.order(:name) %>
       <%= f.input :material_weight, label: false do %>
         <%= f.label :material_weight %>
         <div class="input-group">
@@ -9,7 +9,7 @@
           <span class="input-group-addon">lbs</span>
         </div>
       <% end %>
-    <%= f.button :submit, "Submit", id: 'create_location', class: "btn btn-success" %>
+    <%= f.button :submit, "Submit", class: "btn btn-success" %>
     <%= link_to "Home", root_path, class: "btn btn-default" %>
   <% end %>
   <% if @job.sum_of_raw_boxes > 0 %>

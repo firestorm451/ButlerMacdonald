@@ -7,8 +7,8 @@
 <div class="col-xs-3">
   <h3> Processed Material </h3>
   <%= simple_form_for [@job_machine, @box], html: { class: 'form-horizontal' }, validate: true do |f| %>
-    <%= f.input :location_id, as: :select, collection: Location.all.order(:name) %>
-    <%= f.input :material_id, as: :select, collection: Material.all.order(:name) %>
+    <%= f.association :location, as: :select, collection: Location.all.order(:name) %>
+    <%= f.association :material, as: :select, collection: Material.all.order(:name) %>
     <%= f.input :material_weight, :autofocus => true %>
     <%= f.button :submit, "Submit", class: "btn btn-success" %>
   <% end %>
@@ -39,7 +39,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= render partial: 'box', collection: @job_machine.input_boxes %>
+        <%= render partial: 'job_machines/box', collection: @job_machine.input_boxes %>
       </tbody>
     </table>
     <% if @job_machine.sum_of_input_boxes > 0 %>
@@ -64,7 +64,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= render partial: 'box2', collection: @job_machine.output_boxes %>
+        <%= render partial: 'job_machines/box2', collection: @job_machine.output_boxes %>
       </tbody>
     </table>
     <% if @job_machine.sum_of_output_boxes > 0 %>
