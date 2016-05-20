@@ -39,7 +39,13 @@ class JobsController < ApplicationController
         redirect_to root_path
       end
     else
-      render :edit
+      if params[:process] == 'add_machines'
+        render :add_machines
+      elsif params[:process] == 'assign_machines'
+        render :assign_machines
+      else
+        render :edit
+      end
     end
   end
 

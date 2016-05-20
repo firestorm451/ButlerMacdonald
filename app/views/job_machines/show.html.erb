@@ -10,7 +10,7 @@
     <%= f.input :location_id, as: :select, collection: Location.all.order(:name) %>
     <%= f.input :material_id, as: :select, collection: Material.all.order(:name) %>
     <%= f.input :material_weight, :autofocus => true %>
-    <%= f.button :submit, "Submit", id: 'create_location' %>
+    <%= f.button :submit, "Submit", class: "btn btn-success" %>
   <% end %>
   <% if @job_machine.sum_of_input_boxes > 0 %>
     <h4> Input Weight: <%= @job_machine.sum_of_input_boxes %></h4>

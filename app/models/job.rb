@@ -53,7 +53,7 @@ class Job < ActiveRecord::Base
     self.job_status != "complete"
   end
 
-  def check_on_hold!
+  def check_on_hold?
     self.job_status != "hold"
   end
 

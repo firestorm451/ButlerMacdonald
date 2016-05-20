@@ -2,7 +2,7 @@
   <div class="col-md-3">
     <div class="row">
       <h3> Assign Machine Order </h3>
-      <%= simple_form_for @job do |f| %>
+      <%= simple_form_for @job, url: job_path(@job, :process => 'assign_machines') do |f| %>
         <%= f.simple_fields_for :job_machines do |job_form| %>
           <%= job_form.input :step_number, label: job_form.object.machine.name %>
         <% end %>

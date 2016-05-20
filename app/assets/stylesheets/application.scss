@@ -15,7 +15,7 @@
  */
 
  #navbar-main {
-   background-color: #99ccff;
+   background-color: #AFDAA0;
    height: 80px;
 
  }
@@ -28,7 +28,7 @@
 
 .navbar-left li {
   margin-top: 40px;
-  background-color: white;
+  background-color: #F8FCEC;
   margin-right: 10px;
 }
 
@@ -39,4 +39,17 @@
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
   background-color: #99ccff;
+}
+
+body {
+  background-color: #F8FCEC;
+}
+
+.tablesorter-default .tablesorter-header {
+  background-color: #AFDAA0;
+}
+
+.tablesorter-default td {
+  background-color: #DEE7C3;
+
 }

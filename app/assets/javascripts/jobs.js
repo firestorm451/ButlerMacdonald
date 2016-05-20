@@ -1,3 +1,9 @@
 $(function(){
-  $("#myTable").tablesorter();
+  $("#myTable").tablesorter({
+
+  });
+});
+
+$(document).ready(function() {
+
 });

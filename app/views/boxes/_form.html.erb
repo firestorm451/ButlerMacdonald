@@ -9,7 +9,7 @@
           <span class="input-group-addon">lbs</span>
         </div>
       <% end %>
-    <%= f.button :submit, "Submit", id: 'create_location' %>
+    <%= f.button :submit, "Submit", id: 'create_location', class: "btn btn-success" %>
     <%= link_to "Home", root_path, class: "btn btn-default" %>
   <% end %>
   <% if @job.sum_of_raw_boxes > 0 %>

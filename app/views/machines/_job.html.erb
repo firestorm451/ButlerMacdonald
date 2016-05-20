@@ -1,6 +1,6 @@
 <tr>
-  <td class="show-job"><%= link_to job.job_number, job_path(job), class: "btn btn-default" %></td>
+  <td class="show-job"><%= link_to job.job_number, job_path(job), class: "btn btn-info" %></td>
   <td class="customer"><%= job.customer.name %></td>
-  <td class="lets-run-this"><%= link_to "Manage Job", job_machine_path(job.link_job_with_machine(@machine)), class: "btn btn-default" %></td>
+  <td class="lets-run-this"><%= link_to "Manage Job", job_machine_path(job.link_job_with_machine(@machine)), class: "btn btn-success" %></td>
   <td class="job-status"><%= job.job_status %></td>
 </tr>
