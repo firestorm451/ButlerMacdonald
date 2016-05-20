@@ -6,9 +6,9 @@
   <td class="kickoff"><%= link_to "Kickoff", kickoff_job_path(job), class: "btn btn-success" if job.ready_to_kick_off? %></td>
   <td class="job-status"><%= job.job_status %></td>
   <% if job.check_on_hold? %>
-    <td class="on-hold"><%= link_to "On Hold", on_hold_job_path(job), class: "btn btn-warning" if job.check_inactive_hold? %></td>
+    <td class="on-hold"><%= link_to "Put On Hold", on_hold_job_path(job), class: "btn btn-warning" if job.check_inactive_hold? %></td>
   <% else %>
-    <td class="off-hold"><%= link_to "Active", activate_job_path(job), class: "btn btn-success" if job.check_status_on_hold? %></td>
+    <td class="off-hold"><%= link_to "Activate", activate_job_path(job), class: "btn btn-success" if job.check_status_on_hold? %></td>
   <% end %>
   <td class="job-complete"><%= link_to "Complete Job", complete_job_path(job), data: { confirm: 'Are you certain you want to complete this job?' }, class: "btn btn-success" if job.ready_to_complete? %></td>
   <td class="job-destroy"><%= link_to "Delete Job", job_path(job), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "btn btn-danger" if job.check_complete_status? %></td>
